@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block content %}
+</ul>
+<div class="dropdown" style="padding-right: 5%;">
+    {% if user.is_authenticated %}
+    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" style="width: 120%; padding-right: 100%;">hi {{ user.username}}</button>
+    <ul class="dropdown-menu" style="background-color:rgb(8, 218, 242); width: 10%;">
+      <li><a class="dropdown-item" href="{% url 'logout' %}">
+      <li>log out</li></a></li>
+      <li><a class="dropdown-item" href="{% url 'edit_food_menu' %}">edit food menu</a></li>
+      <li><a class="dropdown-item" href="{% url 'order_food' %}">order food</a></li>
+    </ul>
+    {% else %}
+    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">log in or sign in</button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="{% url 'login' %}">log in</a></li>
+      <li><a class="dropdown-item" href="accounts/signup">sign in</a></li>
+    </ul>
+    {% endif %}
+</div>
+</div></nav>
+<br>
+<div  style="color:rgb(8, 218, 242); padding:100px 20px;">
+<a href="{% url 'order_food' %}" style="color:rgb(8, 218, 242);">order food</a>
+<br><br>
+<h1>Billing Statement</h1>
+<table style="color:rgb(8, 218, 242);">
+    <tr>
+        <th>customer id</th>
+        <th>customer name</th>
+        <th>phone number</th>
+        <th>bill record id</th>
+        <th>food id</th>
+        <th>food name</th>
+        <th>food prise</th>
+        <th>quantity</th>
+        <th>prise</th>
+        <th>created time</th>
+        <th>updated time</th>
+        <th>total</th>
+        <th>bill created by</th>
+    </tr>
+    {% for post in object_list %}
+    <tr>
+        <td>{{post.cid}}</td>
+        <td>{{post.cna}}</td>
+        <td >{{post.cnumber}}</td>
+        <td>{{post.idbill}}</td>
+        <td>{{post.fid}}</td>
+        <td>{{post.fname}}</td>
+        <td>{{post.fp}}</td>
+        <td>{{post.qty}}</td>
+        <td>{{post.prise}}</td>
+        <td>{{post.ctime}}</td>
+        <td>{{post.utime}}</td>
+        <td>{{post.total}}</td>
+        <td>{{post.author}}</td>
+    </tr>
+    {% endfor %}
+</table>
+</div>
+    {% endblock content %}

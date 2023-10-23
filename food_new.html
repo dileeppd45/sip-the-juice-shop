@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% block content %}
+</ul>
+<div class="dropdown" style="padding-right: 5%;">
+    {% if user.is_authenticated %}
+    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" style="width: 120%; padding-right: 100%;">hi {{ user.username}}</button>
+    <ul class="dropdown-menu" style="background-color:rgb(8, 218, 242); width: 10%;">
+      <li><a class="dropdown-item" href="{% url 'logout' %}">
+      <li>log out</li></a></li>
+      <li><a class="dropdown-item" href="{% url 'edit_food_menu' %}">edit food menu</a></li>
+      <li><a class="dropdown-item" href="{% url 'order_food' %}">order food</a></li>
+    </ul>
+    {% else %}
+    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">log in or sign in</button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="{% url 'login' %}">log in</a></li>
+      <li><a class="dropdown-item" href="accounts/signup">sign in</a></li>
+    </ul>
+    {% endif %}
+  </div>
+</div></nav>
+<div class="container" style="color:rgb(8, 218, 242); width: 30vw; float: left; padding:100px 20px; height: 100vh;" >
+<h1>New food item</h1>
+
+<form action="Create_food_success" method="post">
+    {% csrf_token %}
+    <p>
+        <label >Fname:</label>
+        <input type="text" name="fn" maxlength="400" required>
+    </p>
+    <p>
+        <label >Category:</label>
+        <select name="category" required >
+      <option value="" selected>---------</option>
+    
+      <option value="JUICE">JUICE SPLASH</option>
+    
+      <option value="LIME">LIME REFRESHER</option>
+    
+      <option value="SCOOPS">SCOOPS</option>
+    
+      <option value="ICE">ICE CREAM CHAT</option>
+    
+      <option value="AVIL">AVIL MILK</option>
+    
+      <option value="SHAKES">SHAKES</option>
+    
+      <option value="BURGER">BURGER</option>
+    
+      <option value="SANDWICH">SANDWICH</option>
+    
+      <option value="FRENCH">FRENCH FRIES &amp; NUGGETS</option>
+    
+      <option value="HOT">HOT SPOT</option>
+    
+      <option value="MANDHI">MANDHI</option>
+    
+      <option value="ALFAHAM">AL FAHAM</option>
+    
+      <option value="CURRYFRY">CURRY &amp; FRY</option>
+    
+      <option value="VEG">VEG</option>
+    
+      <option value="CHICKENCHINESE">CHICKEN CHINESE &amp; NORTH INDIAN</option>
+    
+      <option value="BEEF">BEEF</option>
+    
+    </select>
+        
+        
+      </p>
+    
+      
+      <p>
+        <label >Fp:</label>
+        <input type="number" name="fp" >
+        
+        
+          
+        
+      </p>
+    <input type="submit" value="Save">
+    </form>
+</div>
+<div  class="container" style="color:rgb(8, 218, 242); width: 60vw; float: right; padding:100px 20px; height: 100vh;">
+        <h1>food menu</h1>
+        <form class="form-inline mt-2 mt-md-0" action="{% url 'search_menu' %}" method="get">
+           <input name="q" class="form-control mr-sm-2" type="text" placeholder="Search menu" aria-label="Search">
+        </form>
+      <div style="overflow:scroll;height:60vh ">  
+       <table style="color:rgb(8, 218, 242);">
+           <tr>
+               <th>id</th>
+               <th>food</th>
+               <th>food prise</th>
+               <th>details</th>
+               
+           </tr>
+           {% for i in food_menu %}
+           <tr>
+               <td><input type="number" value="{{i.id}}"name="id" readonly></td>
+               <td><input type="text" value="{{ i.fname }}({{i.category}})" name="fname" readonly></td>
+               <td><input type="number" value="{{i.fp}}" name="fp" readonly></td>  
+               <td><a href="{% url 'food_detail' i.pk %}" style="color:rgb(8, 218, 242);">details</a></td>
+            </a>       
+           </tr>    
+           {% endfor %}
+       </table>
+      </div>
+</div>
+    
+{% endblock content %}

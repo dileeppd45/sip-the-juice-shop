@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+</ul>
+<div class="dropdown" style="padding-right: 5%;">
+    {% if user.is_authenticated %}
+    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" style="width: 120%; padding-right: 100%;">hi {{ user.username}}</button>
+    <ul class="dropdown-menu" style="background-color:rgb(8, 218, 242); width: 10%;">
+      <li><a class="dropdown-item" href="{% url 'logout' %}">
+      <li>log out</li></a></li>
+      <li><a class="dropdown-item" href="{% url 'edit_food_menu' %}">edit food menu</a></li>
+      <li><a class="dropdown-item" href="{% url 'order_food' %}">order food</a></li>
+    </ul>
+    {% else %}
+    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">log in or sign in</button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="{% url 'login' %}">log in</a></li>
+      <li><a class="dropdown-item" href="accounts/signup">sign in</a></li>
+    </ul>
+    {% endif %}
+  </div>
+</div></nav>
+<br>
+<div class="container" style="color:rgb(8, 218, 242); padding:100px 20px;">
+<br>
+<div class="container">
+    <h1>Delete item</h1>
+    <form action="" method="post">{% csrf_token %}
+    <p>Are you sure you want to delete "{{ bill.fname }}"?</p>
+    <input type="submit" value="Confirm">
+    </form>
+</div>
+</div>
+{% endblock content %}

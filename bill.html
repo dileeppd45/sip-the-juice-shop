@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% block content %}
+</ul>
+<div class="dropdown" style="padding-right: 5%;">
+    {% if user.is_authenticated %}
+    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" style="width: 120%; padding-right: 100%;">hi {{ user.username}}</button>
+    <ul class="dropdown-menu" style="background-color:rgb(8, 218, 242); width: 10%;">
+      <li><a class="dropdown-item" href="{% url 'logout' %}">
+      <li>log out</li></a></li>
+      <li><a class="dropdown-item" href="{% url 'edit_food_menu' %}">edit food menu</a></li>
+      <li><a class="dropdown-item" href="{% url 'order_food' %}">order food</a></li>
+    </ul>
+    {% else %}
+    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">log in or sign in</button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="{% url 'login' %}">log in</a></li>
+      <li><a class="dropdown-item" href="accounts/signup">sign in</a></li>
+    </ul>
+    {% endif %}
+</div>
+</div></nav>
+<br>
+<div  style="color:rgb(8, 218, 242); padding:100px 20px;" class="container">
+    <br><br>
+    <h2> customer details</h2>
+    <table style="color:rgb(8, 218, 242);">
+        <tr>
+            <th>customer name</th>
+            <th>phone number</th>
+        </tr>
+        <tr>
+            <td>{{customername}}</td>
+            <td >{{phonenumber}} </td>
+        </tr>
+    </table>
+        <br><br>
+    <h2>Added food</h2>
+    <table style="color:rgb(8, 218, 242);">   
+        <tr>
+            <th>id</th>
+            <th>food</th>
+            <th>prise</th>
+            <th>quantity</th>
+            <th> amount</th> 
+            <th>edit</th> 
+        </tr>
+        
+        {% for post in billstate %}
+        <tr>
+            <td>{{post.fid}}</td>
+            <td>{{ post.fname }}</td>
+            <td>{{post.fp}}</td>
+            <td>{{post.qty}}</td>
+            <td>{{post.prise}}</td>
+            <td><a href="{% url 'record_delete' post.pk %}" style="color:rgb(8, 218, 242);">+ Delete item</a></td>
+        </tr>
+        {% endfor %}
+        
+        <tr>
+            <td colspan="4">total:</td>
+            <td>{{total}}</td>
+        </tr>
+    </table>
+    <h1>Make Bill For Customer</h1>
+    <form action="makebill" method="post">
+        {% csrf_token %}
+        <input type="number" name="total"value="{{total}}"readonly >
+        <input type="submit" value="make bill">
+    </form>
+</div>
+<div style="color:rgb(8, 218, 242);" class="container">
+ <h1>food menu</h1>
+ <form class="form-inline mt-2 mt-md-0" action="{% url 'search_results' %}" method="get" style="width: 10%;">
+    <input name="q" class="form-control mr-sm-2" type="text" placeholder="Search menu" aria-label="Search">
+ </form>
+ </div>
+<div style="margin-bottom: 5%;" class="container">
+<table style="color:rgb(8, 218, 242);">
+    <tr>
+        <th>id</th>
+        <th>food</th>
+        <th>food prise</th>
+        <th>quantity</th>
+        <th>add to cart</th>
+    </tr>
+    {% for post in object_list %}
+    <tr >
+    <form action="getdetails" method="post" style="color:rgb(8, 218, 242);">
+            {% csrf_token %}
+        <td><input type="number" value="{{post.id}}"name="id" readonly></td>
+        <td><input type="text" value="{{ post.fname }}({{post.category}})" name="fname" readonly></td>
+        <td><input type="number" value="{{post.fp}}" name="fp" readonly></td>
+        <td><input type="number" name="q" required></td>
+        <td><input type="submit" value="add"></td>
+    </form>
+    </tr>    
+    {% endfor %}
+</table>
+</div>
+
+{% endblock content %}

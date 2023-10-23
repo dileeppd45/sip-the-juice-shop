@@ -1,0 +1,1738 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<li class="nav-item" data-bs-toggle="pill">
+  <a class="nav-link" href="#section1">home</a>
+</li>
+<li class="nav-item" data-bs-toggle="pill">
+  <a class="nav-link" href="#section2">about</a>
+</li>
+<li class="nav-item" data-bs-toggle="pill">
+  <a class="nav-link" href="#section3">menu</a>
+</li>
+<li class="nav-item" data-bs-toggle="pill">
+  <a class="nav-link" href="#section4">events</a>
+</li>
+<li class="nav-item" data-bs-toggle="pill">
+  <a class="nav-link" href="#section5">chefs</a>
+</li>
+<li class="nav-item" data-bs-toggle="pill">
+  <a class="nav-link" href="#section6">gallery</a>
+</li>
+
+</ul>
+<div class="dropdown" style="padding-right: 5%;">
+  {% if user.is_authenticated %}
+  <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" style="width: 120%; padding-right: 100%;">hi {{ user.username}}</button>
+  <ul class="dropdown-menu" style="background-color:rgb(8, 218, 242); width: 10%;">
+    <li><a class="dropdown-item" href="{% url 'logout' %}">log out</a></li>
+    <li><a class="dropdown-item" href="{% url 'edit_food_menu' %}">edit food menu</a></li>
+    <li><a class="dropdown-item" href="{% url 'order_food' %}">order food</a></li>
+  </ul>
+  {% else %}
+  <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">log in or sign in</button>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" href="{% url 'login' %}">log in</a></li>
+    <li><a class="dropdown-item" href="accounts/signup">sign in</a></li>
+  </ul>
+  {% endif %}
+</div>
+</div>
+</nav>
+<div id="section1" class="container-fluid  text-white" style="padding:100px 20px;">
+  <div id="demo" class=" container carousel slide" data-bs-ride="carousel">
+
+    <!-- Indicators/dots -->
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="3"></button>
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="4"></button>
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="5"></button>
+    </div>
+
+    <!-- The slideshow/carousel -->
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{% static 'images/sip_the_juice_shop.png' %}" alt="Los Angeles" class="d-block"
+          style="width: 100%;max-height: 300px;">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'images/foods_of_sip.png' %}" alt="Chicago" class="d-block"
+          style="width: 100%;max-height: 300px;">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'images/free_delevery.png' %}" alt="New York" class="d-block"
+          style="width: 100%;max-height: 300px;">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'images/belgium_shake.png' %}" alt="Chicago" class="d-block"
+          style="width: 100%;max-height: 300px;">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'images/sip_shop.png' %}" alt="New York" class="d-block"
+          style="width: 100%;max-height: 300px;">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'images/awsome_shakes.png' %}" alt="New York" class="d-block"
+          style="width: 100%;max-height: 300px;">
+      </div>
+    </div>
+
+    <!-- Left and right controls/icons -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+  <br>
+          <div class="container">
+                <div class="dropdown" >
+                  <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" style="width: 100%;">Order Now</button>
+                  <ul class="dropdown-menu" style="width: 100%;background-color:rgb(8, 218, 242)">
+                    {% if user.is_authenticated %}
+                    <li><a class="dropdown-item" href="{% url 'order_food' %}">home delivery or order food</a></li>
+                    <li><a class="dropdown-item" href="#">book hall for events</a></li>
+                    <li><a class="dropdown-item" href="#">book table</a></li>
+                    {% else %}
+                    <li><a class="dropdown-item" href="{% url 'login' %}">log in</a></li>
+                    <li><a class="dropdown-item" href="accounts/signup">sign in</a></li>
+                    {% endif %}
+                  </ul>
+                </div>
+          </div>
+</div>
+<div id="section2" class="container " style="padding:100px 20px; color: white;">
+  <h2 style="text-align:center;background-color: #222;">ABOUT US</h2>
+  <div class="container">
+    <div class="container" style="background-color: #222; padding:100px 20px;" >
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/MDE-zxK78ns" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen  style="width: 100%;"></iframe>
+    </div>
+    <div class="container" style="background-color: #222;">
+      <p>Sip The Juice Shop is located at: Jn. Puthenchira, Puthenchira, India.</p>
+      <p>We can surely help you find the best one according to your needs. Compare and book now!. You can try to dialing
+        this number: 9526557177</p>
+      <P>Very good place in a small place like mangudy good service</P>
+      <p>here we provide best food, hall for celebration eventd and provide bestie for custum requirements. Here we have
+        lots of menus for dishes.</p>
+    </div>
+  </div>
+</div>
+<div id="section3" class="container-fluid text-white" style="padding-bottom: 10vh; height: 120vh;">
+
+  <h2 style="text-align:center; background-color: #222;">MENU</h2>
+  <div class="container" style="float:left; width:45vw; height: 80vh; overflow:scroll;">
+      <table style="color:rgb(8, 218, 242); ">
+        {% for key1, values1 in sipmenu.items %}
+        <tr bgcolor="black" >
+          <th bgcolor="red" >{{key1}}</th>
+          <th>F</th>
+          <th>H</th>
+          <th>Q</th>
+        </tr>
+        {% for key2, value2 in values1.items %}
+        <tr>
+          <td>{{key2}}</td>
+          {% for value in value2 %}
+            <td>{{value}}</td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+        {% endfor %}
+      </table>
+  </div>
+
+  <div class="container" style="float:right;  width:45vw; height: 80vh; overflow:scroll;">
+  <ul class="nav nav-tabs d-flex justify-content-center aos-init aos-animate" data-aos="fade-up" data-aos-delay="200"
+    role="tablist">
+    <li class="nav-item" role="presentation"> <a class="nav-link show active" data-bs-toggle="tab"
+        data-bs-target="#menu-JUICE" aria-selected="true" role="tab">
+        <h4>JUICE SPLASH</h4>
+      </a></li>
+    <li class="nav-item" role="presentation"> <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-LIME"
+        aria-selected="false" role="tab" tabindex="-1">
+        <h4>LIME REFRESHER</h4>
+      </a></li>
+    <li class="nav-item" role="presentation"> <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-SCOOPS"
+        aria-selected="false" role="tab" tabindex="-1">
+        <h4>SCOOPS</h4>
+      </a></li>
+    <li class="nav-item" role="presentation"> <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-ICE"
+        aria-selected="false" role="tab" tabindex="-1">
+        <h4>ICE CREAM CHAT</h4>
+      </a></li>
+  </ul>
+  <div class="tab-content aos-init aos-animate" data-aos="fade-up" data-aos-delay="300">
+    <div class="tab-pane fade active show" id="menu-JUICE" role="tabpanel">
+      <div class="tab-header text-center">
+        <p>Menu</p>
+        <h3>JUICE SPLASH</h3>
+      </div>
+      <div class="row gy-5">
+        <div class="col-lg-4 menu-item">
+          <a href="{% static 'images/alfaham_mandhi.png'%}" class="glightbox"><img
+              src="{% static 'images/alfaham_mandhi.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Magnam Tiste</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $5.95</p>
+        </div>
+        <div class="col-lg-4 menu-item">
+          <a href="{% static 'images/biriyani.png'%}" class="glightbox"><img src="{% static 'images/biriyani.png'%}"
+              class="menu-img img-fluid" alt=""></a>
+          <h4>Aut Luia</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $14.95</p>
+        </div>
+        <div class="col-lg-4 menu-item">
+          <a href="{% static 'images/chicken_65.png'%}" class="glightbox"><img src="{% static 'images/chicken_65.png'%}"
+              class="menu-img img-fluid" alt=""></a>
+          <h4>Est Eligendi</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $8.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/peri_peri_faham.png'%}" class="glightbox"><img
+              src="{% static 'images/peri_peri_faham.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shawarma.png'%}" class="glightbox"><img
+              src="{% static 'images/shawarma.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/friedrise.png'%}" class="glightbox"><img
+              src="{% static 'images/friedrise.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shawarma.png'%}" class="glightbox"><img
+              src="{% static 'images/shawarma.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/kuzhii_manthi.png'%}" class="glightbox"><img
+              src="{% static 'images/kuzhii_manthi.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/beef_fry.png'%}" class="glightbox"><img
+              src="{% static 'images/beef_fry.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/burger.png'%}" class="glightbox"><img
+              src="{% static 'images/burger.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shake.jpg'%}" class="glightbox"><img
+              src="{% static 'images/shake.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/juice.jpg'%}" class="glightbox"><img
+              src="{% static 'images/juice.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/kizhi_parotta.jpg'%}" class="glightbox"><img
+              src="{% static 'images/kizhi_parotta.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>kizhi parotta</h4>
+          <p class="ingredients"> kizhi with beef, kizhi with chicken, kizhi with egg, kizhi veg </p>
+          <p class="price"> $9.95</p>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="menu-LIME" role="tabpanel">
+      <div class="tab-header text-center">
+        <p>Menu</p>
+        <h3>LIME REFRESHER</h3>
+      </div>
+      <div class="row gy-5">
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/peri_peri_faham.png'%}" class="glightbox"><img
+              src="{% static 'images/peri_peri_faham.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shawarma.png'%}" class="glightbox"><img
+              src="{% static 'images/shawarma.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/friedrise.png'%}" class="glightbox"><img
+              src="{% static 'images/friedrise.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shawarma.png'%}" class="glightbox"><img
+              src="{% static 'images/shawarma.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/kuzhii_manthi.png'%}" class="glightbox"><img
+              src="{% static 'images/kuzhii_manthi.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/beef_fry.png'%}" class="glightbox"><img
+              src="{% static 'images/beef_fry.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/burger.png'%}" class="glightbox"><img
+              src="{% static 'images/burger.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shake.jpg'%}" class="glightbox"><img
+              src="{% static 'images/shake.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/juice.jpg'%}" class="glightbox"><img
+              src="{% static 'images/juice.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/kizhi_parotta.jpg'%}" class="glightbox"><img
+              src="{% static 'images/kizhi_parotta.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>kizhi parotta</h4>
+          <p class="ingredients"> kizhi with beef, kizhi with chicken, kizhi with egg, kizhi veg </p>
+          <p class="price"> $9.95</p>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="menu-SCOOPS" role="tabpanel">
+      <div class="tab-header text-center">
+        <p>Menu</p>
+        <h3>SCOOPS</h3>
+      </div>
+      <div class="row gy-5">
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/peri_peri_faham.png'%}" class="glightbox"><img
+              src="{% static 'images/peri_peri_faham.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shawarma.png'%}" class="glightbox"><img
+              src="{% static 'images/shawarma.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/friedrise.png'%}" class="glightbox"><img
+              src="{% static 'images/friedrise.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shawarma.png'%}" class="glightbox"><img
+              src="{% static 'images/shawarma.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/kuzhii_manthi.png'%}" class="glightbox"><img
+              src="{% static 'images/kuzhii_manthi.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/beef_fry.png'%}" class="glightbox"><img
+              src="{% static 'images/beef_fry.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/burger.png'%}" class="glightbox"><img
+              src="{% static 'images/burger.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shake.jpg'%}" class="glightbox"><img
+              src="{% static 'images/shake.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/juice.jpg'%}" class="glightbox"><img
+              src="{% static 'images/juice.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/kizhi_parotta.jpg'%}" class="glightbox"><img
+              src="{% static 'images/kizhi_parotta.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>kizhi parotta</h4>
+          <p class="ingredients"> kizhi with beef, kizhi with chicken, kizhi with egg, kizhi veg </p>
+          <p class="price"> $9.95</p>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="menu-ICE" role="tabpanel">
+      <div class="tab-header text-center">
+        <p>Menu</p>
+        <h3>ICE CREAM CHAT</h3>
+      </div>
+      <div class="row gy-5">
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/peri_peri_faham.png'%}" class="glightbox"><img
+              src="{% static 'images/peri_peri_faham.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shawarma.png'%}" class="glightbox"><img
+              src="{% static 'images/shawarma.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/friedrise.png'%}" class="glightbox"><img
+              src="{% static 'images/friedrise.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shawarma.png'%}" class="glightbox"><img
+              src="{% static 'images/shawarma.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/kuzhii_manthi.png'%}" class="glightbox"><img
+              src="{% static 'images/kuzhii_manthi.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/beef_fry.png'%}" class="glightbox"><img
+              src="{% static 'images/beef_fry.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/burger.png'%}" class="glightbox"><img
+              src="{% static 'images/burger.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shake.jpg'%}" class="glightbox"><img
+              src="{% static 'images/shake.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/juice.jpg'%}" class="glightbox"><img
+              src="{% static 'images/juice.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/kizhi_parotta.jpg'%}" class="glightbox"><img
+              src="{% static 'images/kizhi_parotta.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>kizhi parotta</h4>
+          <p class="ingredients"> kizhi with beef, kizhi with chicken, kizhi with egg, kizhi veg </p>
+          <p class="price"> $9.95</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ul class="nav nav-tabs d-flex justify-content-center aos-init aos-animate" data-aos="fade-up" data-aos-delay="200"
+    role="tablist">
+    <li class="nav-item" role="presentation"> <a class="nav-link show active" data-bs-toggle="tab"
+        data-bs-target="#menu-AVIL" aria-selected="true" role="tab">
+        <h4>AVIL MILK</h4>
+      </a></li>
+    <li class="nav-item" role="presentation"> <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-SHAKES"
+        aria-selected="false" role="tab" tabindex="-1">
+        <h4>SHAKES</h4>
+      </a></li>
+    <li class="nav-item" role="presentation"> <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-BURGER"
+        aria-selected="false" role="tab" tabindex="-1">
+        <h4>BURGER</h4>
+      </a></li>
+    <li class="nav-item" role="presentation"> <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-SANDWITCH"
+        aria-selected="false" role="tab" tabindex="-1">
+        <h4>SANDWITCH</h4>
+      </a></li>
+  </ul>
+  <div class="tab-content aos-init aos-animate" data-aos="fade-up" data-aos-delay="300">
+    <div class="tab-pane fade active show" id="menu-AVIL" role="tabpanel">
+      <div class="tab-header text-center">
+        <p>Menu</p>
+        <h3>AVIL MILK</h3>
+      </div>
+      <div class="row gy-5">
+        <div class="col-lg-4 menu-item">
+          <a href="{% static 'images/alfaham_mandhi.png'%}" class="glightbox"><img
+              src="{% static 'images/alfaham_mandhi.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Magnam Tiste</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $5.95</p>
+        </div>
+        <div class="col-lg-4 menu-item">
+          <a href="{% static 'images/biriyani.png'%}" class="glightbox"><img src="{% static 'images/biriyani.png'%}"
+              class="menu-img img-fluid" alt=""></a>
+          <h4>Aut Luia</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $14.95</p>
+        </div>
+        <div class="col-lg-4 menu-item">
+          <a href="{% static 'images/chicken_65.png'%}" class="glightbox"><img src="{% static 'images/chicken_65.png'%}"
+              class="menu-img img-fluid" alt=""></a>
+          <h4>Est Eligendi</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $8.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/peri_peri_faham.png'%}" class="glightbox"><img
+              src="{% static 'images/peri_peri_faham.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shawarma.png'%}" class="glightbox"><img
+              src="{% static 'images/shawarma.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/friedrise.png'%}" class="glightbox"><img
+              src="{% static 'images/friedrise.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shawarma.png'%}" class="glightbox"><img
+              src="{% static 'images/shawarma.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/kuzhii_manthi.png'%}" class="glightbox"><img
+              src="{% static 'images/kuzhii_manthi.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/beef_fry.png'%}" class="glightbox"><img
+              src="{% static 'images/beef_fry.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/burger.png'%}" class="glightbox"><img
+              src="{% static 'images/burger.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shake.jpg'%}" class="glightbox"><img
+              src="{% static 'images/shake.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/juice.jpg'%}" class="glightbox"><img
+              src="{% static 'images/juice.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/kizhi_parotta.jpg'%}" class="glightbox"><img
+              src="{% static 'images/kizhi_parotta.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>kizhi parotta</h4>
+          <p class="ingredients"> kizhi with beef, kizhi with chicken, kizhi with egg, kizhi veg </p>
+          <p class="price"> $9.95</p>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="menu-SHAKES" role="tabpanel">
+      <div class="tab-header text-center">
+        <p>Menu</p>
+        <h3>SHAKES</h3>
+      </div>
+      <div class="row gy-5">
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/peri_peri_faham.png'%}" class="glightbox"><img
+              src="{% static 'images/peri_peri_faham.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shawarma.png'%}" class="glightbox"><img
+              src="{% static 'images/shawarma.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/friedrise.png'%}" class="glightbox"><img
+              src="{% static 'images/friedrise.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shawarma.png'%}" class="glightbox"><img
+              src="{% static 'images/shawarma.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/kuzhii_manthi.png'%}" class="glightbox"><img
+              src="{% static 'images/kuzhii_manthi.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/beef_fry.png'%}" class="glightbox"><img
+              src="{% static 'images/beef_fry.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/burger.png'%}" class="glightbox"><img
+              src="{% static 'images/burger.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shake.jpg'%}" class="glightbox"><img
+              src="{% static 'images/shake.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/juice.jpg'%}" class="glightbox"><img
+              src="{% static 'images/juice.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/kizhi_parotta.jpg'%}" class="glightbox"><img
+              src="{% static 'images/kizhi_parotta.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>kizhi parotta</h4>
+          <p class="ingredients"> kizhi with beef, kizhi with chicken, kizhi with egg, kizhi veg </p>
+          <p class="price"> $9.95</p>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="menu-BURGER" role="tabpanel">
+      <div class="tab-header text-center">
+        <p>Menu</p>
+        <h3>BURGER</h3>
+      </div>
+      <div class="row gy-5">
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/peri_peri_faham.png'%}" class="glightbox"><img
+              src="{% static 'images/peri_peri_faham.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shawarma.png'%}" class="glightbox"><img
+              src="{% static 'images/shawarma.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/friedrise.png'%}" class="glightbox"><img
+              src="{% static 'images/friedrise.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shawarma.png'%}" class="glightbox"><img
+              src="{% static 'images/shawarma.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/kuzhii_manthi.png'%}" class="glightbox"><img
+              src="{% static 'images/kuzhii_manthi.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/beef_fry.png'%}" class="glightbox"><img
+              src="{% static 'images/beef_fry.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/burger.png'%}" class="glightbox"><img
+              src="{% static 'images/burger.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shake.jpg'%}" class="glightbox"><img
+              src="{% static 'images/shake.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/juice.jpg'%}" class="glightbox"><img
+              src="{% static 'images/juice.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/kizhi_parotta.jpg'%}" class="glightbox"><img
+              src="{% static 'images/kizhi_parotta.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>kizhi parotta</h4>
+          <p class="ingredients"> kizhi with beef, kizhi with chicken, kizhi with egg, kizhi veg </p>
+          <p class="price"> $9.95</p>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="menu-SANDWITCH" role="tabpanel">
+      <div class="tab-header text-center">
+        <p>Menu</p>
+        <h3>SANDWITCH</h3>
+      </div>
+      <div class="row gy-5">
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/peri_peri_faham.png'%}" class="glightbox"><img
+              src="{% static 'images/peri_peri_faham.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shawarma.png'%}" class="glightbox"><img
+              src="{% static 'images/shawarma.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/friedrise.png'%}" class="glightbox"><img
+              src="{% static 'images/friedrise.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shawarma.png'%}" class="glightbox"><img
+              src="{% static 'images/shawarma.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/kuzhii_manthi.png'%}" class="glightbox"><img
+              src="{% static 'images/kuzhii_manthi.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/beef_fry.png'%}" class="glightbox"><img
+              src="{% static 'images/beef_fry.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/burger.png'%}" class="glightbox"><img
+              src="{% static 'images/burger.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shake.jpg'%}" class="glightbox"><img
+              src="{% static 'images/shake.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/juice.jpg'%}" class="glightbox"><img
+              src="{% static 'images/juice.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/kizhi_parotta.jpg'%}" class="glightbox"><img
+              src="{% static 'images/kizhi_parotta.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>kizhi parotta</h4>
+          <p class="ingredients"> kizhi with beef, kizhi with chicken, kizhi with egg, kizhi veg </p>
+          <p class="price"> $9.95</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ul class="nav nav-tabs d-flex justify-content-center aos-init aos-animate" data-aos="fade-up" data-aos-delay="200"
+    role="tablist">
+    <li class="nav-item" role="presentation"> <a class="nav-link show active" data-bs-toggle="tab"
+        data-bs-target="#menu-HOT" aria-selected="true" role="tab">
+        <h4>HOT SPOT</h4>
+      </a></li>
+    <li class="nav-item" role="presentation"> <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-MANDHI"
+        aria-selected="false" role="tab" tabindex="-1">
+        <h4>MANDHI</h4>
+      </a></li>
+    <li class="nav-item" role="presentation"> <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-AL"
+        aria-selected="false" role="tab" tabindex="-1">
+        <h4>AL FAHAM</h4>
+      </a></li>
+    <li class="nav-item" role="presentation"> <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-VEG"
+        aria-selected="false" role="tab" tabindex="-1">
+        <h4>VEG..</h4>
+      </a></li>
+  </ul>
+  <div class="tab-content aos-init aos-animate" data-aos="fade-up" data-aos-delay="300">
+    <div class="tab-pane fade active show" id="menu-HOT" role="tabpanel">
+      <div class="tab-header text-center">
+        <p>Menu</p>
+        <h3>HOT SPOT</h3>
+      </div>
+      <div class="row gy-5">
+        <div class="col-lg-4 menu-item">
+          <a href="{% static 'images/alfaham_mandhi.png'%}" class="glightbox"><img
+              src="{% static 'images/alfaham_mandhi.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Magnam Tiste</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $5.95</p>
+        </div>
+        <div class="col-lg-4 menu-item">
+          <a href="{% static 'images/biriyani.png'%}" class="glightbox"><img src="{% static 'images/biriyani.png'%}"
+              class="menu-img img-fluid" alt=""></a>
+          <h4>Aut Luia</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $14.95</p>
+        </div>
+        <div class="col-lg-4 menu-item">
+          <a href="{% static 'images/chicken_65.png'%}" class="glightbox"><img src="{% static 'images/chicken_65.png'%}"
+              class="menu-img img-fluid" alt=""></a>
+          <h4>Est Eligendi</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $8.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/peri_peri_faham.png'%}" class="glightbox"><img
+              src="{% static 'images/peri_peri_faham.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shawarma.png'%}" class="glightbox"><img
+              src="{% static 'images/shawarma.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/friedrise.png'%}" class="glightbox"><img
+              src="{% static 'images/friedrise.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shawarma.png'%}" class="glightbox"><img
+              src="{% static 'images/shawarma.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/kuzhii_manthi.png'%}" class="glightbox"><img
+              src="{% static 'images/kuzhii_manthi.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/beef_fry.png'%}" class="glightbox"><img
+              src="{% static 'images/beef_fry.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/burger.png'%}" class="glightbox"><img
+              src="{% static 'images/burger.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shake.jpg'%}" class="glightbox"><img
+              src="{% static 'images/shake.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/juice.jpg'%}" class="glightbox"><img
+              src="{% static 'images/juice.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/kizhi_parotta.jpg'%}" class="glightbox"><img
+              src="{% static 'images/kizhi_parotta.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>kizhi parotta</h4>
+          <p class="ingredients"> kizhi with beef, kizhi with chicken, kizhi with egg, kizhi veg </p>
+          <p class="price"> $9.95</p>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="menu-MANDHI" role="tabpanel">
+      <div class="tab-header text-center">
+        <p>Menu</p>
+        <h3>MANDHI</h3>
+      </div>
+      <div class="row gy-5">
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/peri_peri_faham.png'%}" class="glightbox"><img
+              src="{% static 'images/peri_peri_faham.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shawarma.png'%}" class="glightbox"><img
+              src="{% static 'images/shawarma.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/friedrise.png'%}" class="glightbox"><img
+              src="{% static 'images/friedrise.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shawarma.png'%}" class="glightbox"><img
+              src="{% static 'images/shawarma.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/kuzhii_manthi.png'%}" class="glightbox"><img
+              src="{% static 'images/kuzhii_manthi.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/beef_fry.png'%}" class="glightbox"><img
+              src="{% static 'images/beef_fry.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/burger.png'%}" class="glightbox"><img
+              src="{% static 'images/burger.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shake.jpg'%}" class="glightbox"><img
+              src="{% static 'images/shake.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/juice.jpg'%}" class="glightbox"><img
+              src="{% static 'images/juice.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/kizhi_parotta.jpg'%}" class="glightbox"><img
+              src="{% static 'images/kizhi_parotta.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>kizhi parotta</h4>
+          <p class="ingredients"> kizhi with beef, kizhi with chicken, kizhi with egg, kizhi veg </p>
+          <p class="price"> $9.95</p>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="menu-AL" role="tabpanel">
+      <div class="tab-header text-center">
+        <p>Menu</p>
+        <h3>AL FAHAM</h3>
+      </div>
+      <div class="row gy-5">
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/peri_peri_faham.png'%}" class="glightbox"><img
+              src="{% static 'images/peri_peri_faham.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shawarma.png'%}" class="glightbox"><img
+              src="{% static 'images/shawarma.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/friedrise.png'%}" class="glightbox"><img
+              src="{% static 'images/friedrise.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shawarma.png'%}" class="glightbox"><img
+              src="{% static 'images/shawarma.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/kuzhii_manthi.png'%}" class="glightbox"><img
+              src="{% static 'images/kuzhii_manthi.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/beef_fry.png'%}" class="glightbox"><img
+              src="{% static 'images/beef_fry.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/burger.png'%}" class="glightbox"><img
+              src="{% static 'images/burger.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shake.jpg'%}" class="glightbox"><img
+              src="{% static 'images/shake.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/juice.jpg'%}" class="glightbox"><img
+              src="{% static 'images/juice.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/kizhi_parotta.jpg'%}" class="glightbox"><img
+              src="{% static 'images/kizhi_parotta.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>kizhi parotta</h4>
+          <p class="ingredients"> kizhi with beef, kizhi with chicken, kizhi with egg, kizhi veg </p>
+          <p class="price"> $9.95</p>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="menu-VEG" role="tabpanel">
+      <div class="tab-header text-center">
+        <p>Menu</p>
+        <h3>VEG..</h3>
+      </div>
+      <div class="row gy-5">
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/peri_peri_faham.png'%}" class="glightbox"><img
+              src="{% static 'images/peri_peri_faham.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shawarma.png'%}" class="glightbox"><img
+              src="{% static 'images/shawarma.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/friedrise.png'%}" class="glightbox"><img
+              src="{% static 'images/friedrise.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shawarma.png'%}" class="glightbox"><img
+              src="{% static 'images/shawarma.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/kuzhii_manthi.png'%}" class="glightbox"><img
+              src="{% static 'images/kuzhii_manthi.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/beef_fry.png'%}" class="glightbox"><img
+              src="{% static 'images/beef_fry.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/burger.png'%}" class="glightbox"><img
+              src="{% static 'images/burger.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shake.jpg'%}" class="glightbox"><img
+              src="{% static 'images/shake.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/juice.jpg'%}" class="glightbox"><img
+              src="{% static 'images/juice.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/kizhi_parotta.jpg'%}" class="glightbox"><img
+              src="{% static 'images/kizhi_parotta.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>kizhi parotta</h4>
+          <p class="ingredients"> kizhi with beef, kizhi with chicken, kizhi with egg, kizhi veg </p>
+          <p class="price"> $9.95</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ul class="nav nav-tabs d-flex justify-content-center aos-init aos-animate" data-aos="fade-up" data-aos-delay="200"
+    role="tablist">
+    <li class="nav-item" role="presentation"> <a class="nav-link show active" data-bs-toggle="tab"
+        data-bs-target="#menu-CHICKEN" aria-selected="true" role="tab">
+        <h4>CHICKEN CHINESE & NORTH INDIAN</h4>
+      </a></li>
+    <li class="nav-item" role="presentation"> <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-BEEF"
+        aria-selected="false" role="tab" tabindex="-1">
+        <h4>BEEF</h4>
+      </a></li>
+    <li class="nav-item" role="presentation"> <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-CURRY"
+        aria-selected="false" role="tab" tabindex="-1">
+        <h4>CURRY & FRY</h4>
+      </a></li>
+    <li class="nav-item" role="presentation"> <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-FRENCH"
+        aria-selected="false" role="tab" tabindex="-1">
+        <h4>FRENCH FRIES & NUGGETS</h4>
+      </a></li>
+  </ul>
+  <div class="tab-content aos-init aos-animate" data-aos="fade-up" data-aos-delay="300">
+    <div class="tab-pane fade active show" id="menu-CHICKEN" role="tabpanel">
+      <div class="tab-header text-center">
+        <p>Menu</p>
+        <h3>CHICKEN CHINESE & NORTH INDIAN</h3>
+      </div>
+      <div class="row gy-5">
+        <div class="col-lg-4 menu-item">
+          <a href="{% static 'images/alfaham_mandhi.png'%}" class="glightbox"><img
+              src="{% static 'images/alfaham_mandhi.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Magnam Tiste</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $5.95</p>
+        </div>
+        <div class="col-lg-4 menu-item">
+          <a href="{% static 'images/biriyani.png'%}" class="glightbox"><img src="{% static 'images/biriyani.png'%}"
+              class="menu-img img-fluid" alt=""></a>
+          <h4>Aut Luia</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $14.95</p>
+        </div>
+        <div class="col-lg-4 menu-item">
+          <a href="{% static 'images/chicken_65.png'%}" class="glightbox"><img src="{% static 'images/chicken_65.png'%}"
+              class="menu-img img-fluid" alt=""></a>
+          <h4>Est Eligendi</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $8.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/peri_peri_faham.png'%}" class="glightbox"><img
+              src="{% static 'images/peri_peri_faham.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shawarma.png'%}" class="glightbox"><img
+              src="{% static 'images/shawarma.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/friedrise.png'%}" class="glightbox"><img
+              src="{% static 'images/friedrise.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shawarma.png'%}" class="glightbox"><img
+              src="{% static 'images/shawarma.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/kuzhii_manthi.png'%}" class="glightbox"><img
+              src="{% static 'images/kuzhii_manthi.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/beef_fry.png'%}" class="glightbox"><img
+              src="{% static 'images/beef_fry.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/burger.png'%}" class="glightbox"><img
+              src="{% static 'images/burger.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shake.jpg'%}" class="glightbox"><img
+              src="{% static 'images/shake.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/juice.jpg'%}" class="glightbox"><img
+              src="{% static 'images/juice.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/kizhi_parotta.jpg'%}" class="glightbox"><img
+              src="{% static 'images/kizhi_parotta.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>kizhi parotta</h4>
+          <p class="ingredients"> kizhi with beef, kizhi with chicken, kizhi with egg, kizhi veg </p>
+          <p class="price"> $9.95</p>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="menu-BEEF" role="tabpanel">
+      <div class="tab-header text-center">
+        <p>Menu</p>
+        <h3>BEEF</h3>
+      </div>
+      <div class="row gy-5">
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/peri_peri_faham.png'%}" class="glightbox"><img
+              src="{% static 'images/peri_peri_faham.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shawarma.png'%}" class="glightbox"><img
+              src="{% static 'images/shawarma.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/friedrise.png'%}" class="glightbox"><img
+              src="{% static 'images/friedrise.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shawarma.png'%}" class="glightbox"><img
+              src="{% static 'images/shawarma.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/kuzhii_manthi.png'%}" class="glightbox"><img
+              src="{% static 'images/kuzhii_manthi.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/beef_fry.png'%}" class="glightbox"><img
+              src="{% static 'images/beef_fry.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/burger.png'%}" class="glightbox"><img
+              src="{% static 'images/burger.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shake.jpg'%}" class="glightbox"><img
+              src="{% static 'images/shake.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/juice.jpg'%}" class="glightbox"><img
+              src="{% static 'images/juice.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/kizhi_parotta.jpg'%}" class="glightbox"><img
+              src="{% static 'images/kizhi_parotta.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>kizhi parotta</h4>
+          <p class="ingredients"> kizhi with beef, kizhi with chicken, kizhi with egg, kizhi veg </p>
+          <p class="price"> $9.95</p>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="menu-CURRY" role="tabpanel">
+      <div class="tab-header text-center">
+        <p>Menu</p>
+        <h3>CURRY & FRY</h3>
+      </div>
+      <div class="row gy-5">
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/peri_peri_faham.png'%}" class="glightbox"><img
+              src="{% static 'images/peri_peri_faham.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shawarma.png'%}" class="glightbox"><img
+              src="{% static 'images/shawarma.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/friedrise.png'%}" class="glightbox"><img
+              src="{% static 'images/friedrise.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shawarma.png'%}" class="glightbox"><img
+              src="{% static 'images/shawarma.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/kuzhii_manthi.png'%}" class="glightbox"><img
+              src="{% static 'images/kuzhii_manthi.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/beef_fry.png'%}" class="glightbox"><img
+              src="{% static 'images/beef_fry.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/burger.png'%}" class="glightbox"><img
+              src="{% static 'images/burger.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shake.jpg'%}" class="glightbox"><img
+              src="{% static 'images/shake.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/juice.jpg'%}" class="glightbox"><img
+              src="{% static 'images/juice.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/kizhi_parotta.jpg'%}" class="glightbox"><img
+              src="{% static 'images/kizhi_parotta.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>kizhi parotta</h4>
+          <p class="ingredients"> kizhi with beef, kizhi with chicken, kizhi with egg, kizhi veg </p>
+          <p class="price"> $9.95</p>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="menu-FRENCH" role="tabpanel">
+      <div class="tab-header text-center">
+        <p>Menu</p>
+        <h3>FRENCH FRIES & NUGGETS</h3>
+      </div>
+      <div class="row gy-5">
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/peri_peri_faham.png'%}" class="glightbox"><img
+              src="{% static 'images/peri_peri_faham.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shawarma.png'%}" class="glightbox"><img
+              src="{% static 'images/shawarma.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/friedrise.png'%}" class="glightbox"><img
+              src="{% static 'images/friedrise.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shawarma.png'%}" class="glightbox"><img
+              src="{% static 'images/shawarma.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Eos Luibusdam</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $12.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/kuzhii_manthi.png'%}" class="glightbox"><img
+              src="{% static 'images/kuzhii_manthi.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/beef_fry.png'%}" class="glightbox"><img
+              src="{% static 'images/beef_fry.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/burger.png'%}" class="glightbox"><img
+              src="{% static 'images/burger.png'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/shake.jpg'%}" class="glightbox"><img
+              src="{% static 'images/shake.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/juice.jpg'%}" class="glightbox"><img
+              src="{% static 'images/juice.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>Laboriosam Direva</h4>
+          <p class="ingredients"> Lorem, deren, trataro, filede, nerada</p>
+          <p class="price"> $9.95</p>
+        </div>
+        <div class="col-lg-4 menu-item"> <a href="{% static 'images/kizhi_parotta.jpg'%}" class="glightbox"><img
+              src="{% static 'images/kizhi_parotta.jpg'%}" class="menu-img img-fluid" alt=""></a>
+          <h4>kizhi parotta</h4>
+          <p class="ingredients"> kizhi with beef, kizhi with chicken, kizhi with egg, kizhi veg </p>
+          <p class="price"> $9.95</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+</div>
+<div id="section4" class="container  text-white" style="margin-top: 10%; padding:100px 20px; ">
+  <h2 style="text-align:center; background-color: #222;">EVENTS</h2>
+  <div class="container" style=" padding:100px 20px 100px;">
+    <div class="container">
+      <div class="caption-container" style="width:100%; height:auto; vertical-align: middle;">
+        <p>birthday celebrations</p>
+        <img src="{% static 'images/birthday.jpg'%}" alt="birthday celebrations"
+          style="width:70%; height:auto; vertical-align: middle;">
+      </div>
+    </div>
+    <br>
+    <div class="container">
+      <div class="caption-container" style="width:100%; height:auto; vertical-align: middle;">
+        <p>custom celebrations</p>
+        <img src="{% static 'images/custom.jpg'%}" alt="custom celebrations"
+          style="width:70%; height:auto; vertical-align: middle;">
+      </div>
+    </div>
+    <br>
+    <div class="container">
+      <div class="caption-container" style="width:100%; height:auto; vertical-align: middle;">
+        <p>private celebrations</p>
+        <img src="{% static 'images/private.jpg'%}" alt="private celebrations"
+          style="width:70%; height:auto; vertical-align: middle;">
+      </div>
+    </div>
+  </div>
+</div>
+<div id="section5" class="container " style="padding:100px 20px; color: white; ">
+  <div class="container-fluid">
+    <h2 style="text-align:center;background-color: #222;">chefs</h2>
+    <div class="container">
+      <h1 style="text-align:center;background-color: #222;">Our Proffesional Chefs</h1>
+      <br>
+
+      <div id="r5">
+        <div id="col5">
+          <div id="card5">
+            <img src="{% static 'images/chefs-1.jpg'%}" alt="Jane" style="width:100%">
+            <div id="con5">
+              <h2>Walter White</h2>
+              <p id="title5">Master Chef</p>
+              <p>Velit aut quia fugit et et. Dolorum ea voluptate vel tempore tenetur ipsa quae aut. Ipsum
+                exercitationem iure minima enim corporis et voluptate.</p>
+
+            </div>
+          </div>
+        </div>
+
+        <div id="col5">
+          <div id="card5">
+            <img src="{% static 'images/chefs-2.jpg'%}" alt="Mike" style="width:100%">
+            <div id="con5">
+              <h2>Sarah Jhonson</h2>
+              <p id="title5">Patissier</p>
+              <p>Quo esse repellendus quia id. Est eum et accusantium pariatur fugit nihil minima suscipit corporis.
+                Voluptate sed quas reiciendis animi neque sapiente.</p>
+
+            </div>
+          </div>
+        </div>
+
+        <div id="col5">
+          <div id="card5">
+            <img src="{% static 'images/chefs-3.jpg'%}" alt="John" style="width:100%">
+            <div id="con5">
+              <h2>William Anderson</h2>
+              <p id="title5">Cook</p>
+              <p>Vero omnis enim consequatur. Voluptas consectetur unde qui molestiae deserunt. Voluptates enim aut
+                architecto porro aspernatur molestiae modi.</p>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<div id="section6" class="container-fluid  text-white" style="padding:100px 20px; height: 100vh;">
+  <h2 style="text-align:center; background-color: #222;">GALLERY</h2>
+  <div class="container-fluid">
+  <div class="container" style="width:34%; float:left; height: 60vh; ">
+    <div class="mySlides">
+      <div class="numbertext"> 1 / 49 </div><img src="{% static 'images/alfaham_mandhi.png'%} " style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext"> 2 / 49 </div><img src="{% static 'images/alfam_mandhi.png'%} " style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext"> 3 / 49 </div><img src="{% static 'images/al_manthi.png '%}" style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext"> 4 / 49 </div><img src="{% static 'images/awsome_shakes.png'%} " style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext"> 5 / 49 </div><img src="{% static 'images/beef_biriyani.png'%} " style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext"> 6 / 49 </div><img src="{% static 'images/beef_fry.png'%} " style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext"> 7 / 49 </div><img src="{% static 'images/belgium_shake.png'%} " style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext"> 8 / 49 </div><img src="{% static 'images/biriyani.png '%}" style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext"> 9 / 49 </div><img src="{% static 'images/birthday.jpg '%}" style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext"> 10 / 49 </div><img src="{% static 'images/burger.png'%} " style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext"> 11 / 49 </div><img src="{% static 'images/burger_with_shakes.png'%} " style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext"> 12 / 49 </div><img src=" {% static 'images/butterscoch_shake.png '%}" style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext"> 13 / 49 </div><img src="{% static 'images/chicago.jpg '%}" style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext"> 14 / 49 </div><img src=" {% static 'images/chicken_65.png'%} " style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext"> 15 / 49 </div><img src="{% static 'images/chicken_biriyani.png '%}" style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext"> 16 / 49 </div><img src=" {% static 'images/chilly_chicken_friedrise.png'%} "
+        style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext"> 17 / 49 </div><img src="{% static 'images/chinese_&_north_dishes.png'%} "
+        style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext"> 18 / 49 </div><img src=" {% static 'images/custom.jpg '%}" style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext"> 19 / 49 </div><img src=" {% static 'images/enjoy_manthi.png'%} " style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext"> 20 / 49 </div><img src=" {% static 'images/flavors_of_alfaham.png'%} "
+        style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext"> 21 / 49 </div><img src=" {% static 'images/foods_of_sip.png '%}" style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext"> 22 / 49 </div><img src=" {% static 'images/food_order.png'%} " style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext"> 23 / 49 </div><img src=" {% static 'images/free_delevery.png '%}" style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext"> 24 / 49 </div><img src=" {% static 'images/free_delivery.png '%}" style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext"> 25 / 49 </div><img src=" {% static 'images/friedrise.png'%} " style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext"> 26 / 49 </div><img src=" {% static 'images/friedrise_&_chilly_chicken.png '%}"
+        style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext"> 27 / 49 </div><img src=" {% static 'images/grill_is_on.png'%} " style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext"> 28 / 49 </div><img src="{% static 'images/honey_alfaham.png '%}" style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext"> 29 / 49 </div><img src="{% static 'images/kuzhii_manthi.png '%}" style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext"> 30 / 49 </div><img src="{% static 'images/kuzhi_manthi.png'%} " style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext"> 31 / 49 </div><img src="{% static 'images/logo.png'%} " style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext"> 32 / 49 </div><img src=" {% static 'images/manthi_alfaham.png '%}" style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext"> 33 / 49 </div><img src="{% static 'images/menu.png'%} " style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext"> 34 / 49 </div><img src="{% static 'images/order_food.png'%} " style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext"> 35 / 49 </div><img src="{% static 'images/pathiri.png '%}" style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext"> 36 / 49 </div><img src=" {% static 'images/peri_peri.png'%} " style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext"> 37 / 49 </div><img src="{% static 'images/peri_peri_faham.png '%}" style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext"> 38 / 49 </div><img src="{% static 'images/private.jpg'%} " style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext"> 39 / 49 </div><img src="{% static 'images/rise_manthi.png'%} " style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext"> 40 / 49 </div><img src="{% static 'images/serve_food.png '%}" style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext"> 41 / 49 </div><img src="{% static 'images/serving_alfaham.png '%}" style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext"> 42 / 49 </div><img src=" {% static 'images/shakes_of_belgium.png '%}" style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext"> 43 / 49 </div><img src="{% static 'images/shawarma.png '%}" style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext"> 44 / 49 </div><img src="{% static 'images/sip_shop.png'%} " style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext"> 45 / 49 </div><img src="{% static 'images/sip_the_juice_shop.png'%} " style="width:100%">
+    </div>
+    <div class="mySlides">
+      <div class="numbertext"> 46 / 49 </div><img src=" {% static 'images/table_is_yours.png'%} " style="width:100%">
+    </div>
+    <a class="prev" onclick="plusSlides(-1)">❮</a>
+    <a class="next" onclick="plusSlides(1)">❯</a>
+    <div class="caption-container">
+      <p id="caption"></p>
+    </div>
+  </div>
+  <div class="container" style="width:65%;float: right; height: 80vh; overflow: scroll;">
+    <div class="container" style="float: right;">
+      <div class="column"><img class="demo cursor" src=" {% static 'images/alfaham_mandhi.png'%} " style="width:100%"
+          onclick="currentSlide( 1 )" alt=" alfaham mandhi "></div>
+      <div class="column"><img class="demo cursor" src=" {% static 'images/alfam_mandhi.png'%} " style="width:100%"
+          onclick="currentSlide( 2 )" alt=" alfam mandhi "></div>
+      <div class="column"><img class="demo cursor" src="{% static 'images/al_manthi.png '%}" style="width:100%"
+          onclick="currentSlide( 3 )" alt=" al manthi "></div>
+      <div class="column"><img class="demo cursor" src="{% static 'images/awsome_shakes.png '%}" style="width:100%"
+          onclick="currentSlide( 4 )" alt=" awsome shakes "></div>
+      <div class="column"><img class="demo cursor" src=" {% static 'images/beef_biriyani.png'%} " style="width:100%"
+          onclick="currentSlide( 5 )" alt=" beef biriyani "></div>
+      <div class="column"><img class="demo cursor" src=" {% static 'images/beef_fry.png '%}" style="width:100%"
+          onclick="currentSlide( 6 )" alt=" beef fry "></div>
+      <div class="column"><img class="demo cursor" src=" {% static 'images/belgium_shake.png'%} " style="width:100%"
+          onclick="currentSlide( 7 )" alt=" belgium shake "></div>
+      <div class="column"><img class="demo cursor" src=" {% static 'images/biriyani.png '%}" style="width:100%"
+          onclick="currentSlide( 8 )" alt=" biriyani "></div>
+      <div class="column"><img class="demo cursor" src=" {% static 'images/birthday.jpg'%} " style="width:100%"
+          onclick="currentSlide( 9 )" alt=" birthday "></div>
+      <div class="column"><img class="demo cursor" src=" {% static 'images/burger.png'%} " style="width:100%"
+          onclick="currentSlide( 10 )" alt=" burger "></div>
+      <div class="column"><img class="demo cursor" src=" {% static 'images/burger_with_shakes.png'%} "
+          style="width:100%" onclick="currentSlide( 11 )" alt=" burger with shakes "></div>
+      <div class="column"><img class="demo cursor" src=" {% static 'images/butterscoch_shake.png '%}" style="width:100%"
+          onclick="currentSlide( 12 )" alt=" butterscoch shake "></div>
+      <div class="column"><img class="demo cursor" src=" {% static 'images/chicago.jpg '%}" style="width:100%"
+          onclick="currentSlide( 13 )" alt=" chicago "></div>
+      <div class="column"><img class="demo cursor" src=" {% static 'images/chicken_65.png'%} " style="width:100%"
+          onclick="currentSlide( 14 )" alt=" chicken 65 "></div>
+      <div class="column"><img class="demo cursor" src=" {% static 'images/chicken_biriyani.png'%} " style="width:100%"
+          onclick="currentSlide( 15 )" alt=" chicken biriyani "></div>
+      <div class="column"><img class="demo cursor" src=" {% static 'images/chilly_chicken_friedrise.png '%}"
+          style="width:100%" onclick="currentSlide( 16 )" alt=" chilly chicken friedrise "></div>
+      <div class="column"><img class="demo cursor" src=" {% static 'images/chinese_&_north_dishes.png'%} "
+          style="width:100%" onclick="currentSlide( 17 )" alt=" chinese & north dishes "></div>
+      <div class="column"><img class="demo cursor" src=" {% static 'images/custom.jpg'%} " style="width:100%"
+          onclick="currentSlide( 18 )" alt=" custom "></div>
+      <div class="column"><img class="demo cursor" src=" {% static 'images/enjoy_manthi.png '%}" style="width:100%"
+          onclick="currentSlide( 19 )" alt=" enjoy manthi "></div>
+      <div class="column"><img class="demo cursor" src=" {% static 'images/flavors_of_alfaham.png'%} "
+          style="width:100%" onclick="currentSlide( 20 )" alt=" flavors of alfaham "></div>
+      <div class="column"><img class="demo cursor" src=" {% static 'images/foods_of_sip.png'%} " style="width:100%"
+          onclick="currentSlide( 21 )" alt=" foods of sip "></div>
+      <div class="column"><img class="demo cursor" src=" {% static 'images/food_order.png'%} " style="width:100%"
+          onclick="currentSlide( 22 )" alt=" food order "></div>
+      <div class="column"><img class="demo cursor" src=" {% static 'images/free_delevery.png'%} " style="width:100%"
+          onclick="currentSlide( 23 )" alt=" free delevery "></div>
+      <div class="column"><img class="demo cursor" src=" {% static 'images/free_delivery.png'%} " style="width:100%"
+          onclick="currentSlide( 24 )" alt=" free delivery "></div>
+      <div class="column"><img class="demo cursor" src=" {% static 'images/friedrise.png '%}" style="width:100%"
+          onclick="currentSlide( 25 )" alt=" friedrise "></div>
+      <div class="column"><img class="demo cursor" src=" {% static 'images/friedrise_&_chilly_chicken.png'%} "
+          style="width:100%" onclick="currentSlide( 26 )" alt=" friedrise & chilly chicken "></div>
+      <div class="column"><img class="demo cursor" src=" {% static 'images/grill_is_on.png '%}" style="width:100%"
+          onclick="currentSlide( 27 )" alt=" grill is on "></div>
+      <div class="column"><img class="demo cursor" src=" {% static 'images/honey_alfaham.png'%} " style="width:100%"
+          onclick="currentSlide( 28 )" alt=" honey alfaham "></div>
+      <div class="column"><img class="demo cursor" src=" {% static 'images/kuzhii_manthi.png'%} " style="width:100%"
+          onclick="currentSlide( 29 )" alt=" kuzhii manthi "></div>
+      <div class="column"><img class="demo cursor" src=" {% static 'images/kuzhi_manthi.png'%} " style="width:100%"
+          onclick="currentSlide( 30 )" alt=" kuzhi manthi "></div>
+      <div class="column"><img class="demo cursor" src=" {% static 'images/logo.png'%} " style="width:100%"
+          onclick="currentSlide( 31 )" alt=" logo "></div>
+      <div class="column"><img class="demo cursor" src=" {% static 'images/manthi_alfaham.png'%} " style="width:100%"
+          onclick="currentSlide( 32 )" alt=" manthi alfaham "></div>
+      <div class="column"><img class="demo cursor" src=" {% static 'images/menu.png'%} " style="width:100%"
+          onclick="currentSlide( 33 )" alt=" menu "></div>
+      <div class="column"><img class="demo cursor" src="{% static 'images/order_food.png '%}" style="width:100%"
+          onclick="currentSlide( 34 )" alt=" order food "></div>
+      <div class="column"><img class="demo cursor" src="{% static 'images/pathiri.png'%} " style="width:100%"
+          onclick="currentSlide( 35 )" alt=" pathiri "></div>
+      <div class="column"><img class="demo cursor" src=" {% static 'images/peri_peri.png'%} " style="width:100%"
+          onclick="currentSlide( 36 )" alt=" peri peri "></div>
+      <div class="column"><img class="demo cursor" src=" {% static 'images/peri_peri_faham.png '%}" style="width:100%"
+          onclick="currentSlide( 37 )" alt=" peri peri faham "></div>
+      <div class="column"><img class="demo cursor" src=" {% static 'images/private.jpg '%}" style="width:100%"
+          onclick="currentSlide( 38 )" alt=" private "></div>
+      <div class="column"><img class="demo cursor" src="{% static 'images/rise_manthi.png '%}" style="width:100%"
+          onclick="currentSlide( 39 )" alt=" rise manthi "></div>
+      <div class="column"><img class="demo cursor" src=" {% static 'images/serve_food.png '%}" style="width:100%"
+          onclick="currentSlide( 40 )" alt=" serve food "></div>
+      <div class="column"><img class="demo cursor" src=" {% static 'images/serving_alfaham.png '%}" style="width:100%"
+          onclick="currentSlide( 41 )" alt=" serving alfaham "></div>
+      <div class="column"><img class="demo cursor" src=" {% static 'images/shakes_of_belgium.png'%} " style="width:100%"
+          onclick="currentSlide( 42 )" alt=" shakes of belgium "></div>
+      <div class="column"><img class="demo cursor" src=" {% static 'images/shawarma.png'%} " style="width:100%"
+          onclick="currentSlide( 43 )" alt=" shawarma "></div>
+      <div class="column"><img class="demo cursor" src=" {% static 'images/sip_shop.png '%}" style="width:100%"
+          onclick="currentSlide( 44 )" alt=" sip shop "></div>
+      <div class="column"><img class="demo cursor" src=" {% static 'images/sip_the_juice_shop.png '%}"
+          style="width:100%" onclick="currentSlide( 45 )" alt=" sip the juice shop "></div>
+      <div class="column"><img class="demo cursor" src=" {% static 'images/table_is_yours.png'%} " style="width:100%"
+          onclick="currentSlide( 46 )" alt=" table is yours "></div>
+    </div>
+  </div>
+  </div>
+</div>
+
+{% endblock content %}
